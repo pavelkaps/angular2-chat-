@@ -1,0 +1,12 @@
+<div class="content">
+    <ul>
+        <li *ngFor="let message of messageBox">
+            <span>{{message.text}}</span>
+        </li>
+    </ul>
+
+    <div class="send-input">
+        <button md-button (click)="add(messageInput)">Send</button>
+        <md-input placeholder="Сообщение" [(ngModel)]="messageInput.text"></md-input>
+    </div>
+</div>

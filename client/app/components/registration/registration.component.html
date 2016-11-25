@@ -1,0 +1,11 @@
+<div class="center">
+    <form [formGroup]="registrationForm" novalidate (ngSubmit)="create(registrationForm.value)">
+        <md-input placeholder="Login" class="inputs" formControlName="login"></md-input>
+        <md-input placeholder="Password" class="inputs" formControlName="password" type="password"></md-input>
+        <md-input placeholder="Repeat Password" class="inputs" formControlName="repeatpassword" type="password"></md-input>
+
+        <button md-button class="login-button" type="submit">
+            <span style="color: #ffffff;">REGISTRATION</span>
+        </button>
+    </form>
+</div>

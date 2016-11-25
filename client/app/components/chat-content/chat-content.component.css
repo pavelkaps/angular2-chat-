@@ -1,0 +1,19 @@
+.send-input{
+
+    margin-bottom: 20px;
+}
+
+.send-input md-input{
+    width: 82%;
+    float: left;
+}
+
+.send-input button{
+    float: right;
+    margin-left: 20px;
+}
+
+.content{
+    float: right;
+    width: 75%;
+}

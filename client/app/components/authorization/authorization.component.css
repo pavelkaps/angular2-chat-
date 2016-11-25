@@ -1,0 +1,14 @@
+.center{
+    text-align: center;
+}
+
+.inputs{
+    width: 100%;
+    color: #009688;
+}
+
+.login-button{
+    width:150px;
+    height: 40px;
+    background-color: #009688;
+}
