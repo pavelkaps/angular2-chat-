@@ -5,7 +5,8 @@ var isPublic = typeof window != "undefined";
   var map = {
     'app':                        'app', // 'dist',
     '@angular':                   (isPublic)? '@angular' : 'node_modules/@angular',
-    'rxjs':                       (isPublic)? 'rxjs' : 'node_modules/rxjs'
+    'rxjs':                       (isPublic)? 'rxjs' : 'node_modules/rxjs',
+    'socket.io-client':           (isPublic)? 'socket.io-client':'node_modules/socket.io-client',
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -36,6 +37,7 @@ var isPublic = typeof window != "undefined";
   // Add package entries for angular packages
   ngPackageNames.forEach(setPackageConfig);
   packages['@angular/material'] = { main: 'material.umd.js', defaultExtension: 'js' };
+  packages['socket.io-client'] = {  main: '/dist/socket.io.js', defaultExtension: 'js' };
   var config = {
     map: map,
     packages: packages

@@ -16,6 +16,8 @@ import {MainComponent} from './components/main/main.component'
 
 import {UsersService} from './services/users.service';
 import {VerificationService} from "./services/verification.service";
+import {SocketService} from './services/socket.services/soket.service';
+import {MessageService} from './services/socket.services/message.service';
 import './rxjs-extensions';
 
 import {ChatComponent} from './components/chat/chat.component'
@@ -40,7 +42,9 @@ import {ChatContentComponent} from "./components/chat-content/chat-content.compo
     ], 
     providers: [
         UsersService,
-        VerificationService
+        VerificationService,
+        SocketService,
+        MessageService
     ],
     bootstrap: [
         AppComponent

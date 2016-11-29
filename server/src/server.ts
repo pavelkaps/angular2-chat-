@@ -39,15 +39,11 @@ if(env === 'developement'){
     });
 }
 
-
-// catch 404 and forward to error handler
 app.use(function(req: express.Request, res: express.Response, next) {
     let err = new Error("Not Found");
     next(err);
 });
 
-// production error handler
-// no stacktrace leaked to user
 app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
     res.status(err.status || 500);
     res.json({
@@ -56,4 +52,4 @@ app.use(function(err: any, req: express.Request, res: express.Response, next: ex
     });
 });
 
-export { app }
+export { app };

@@ -82,7 +82,7 @@ gulp.task("clientResources", () => {
  * Copy bin directory for www
  */
 gulp.task("serverResources", () => {
-    return gulp.src(["server/src/bin/**"])
+    return gulp.src(["server/src/bin/**","!server/src/bin/*.ts"])
         .pipe(gulp.dest("dist/server/bin"));
 });
 

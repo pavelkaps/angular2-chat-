@@ -6,7 +6,7 @@
     </ul>
 
     <div class="send-input">
-        <button md-button (click)="add(messageInput)">Send</button>
+        <button md-button [disableRipple]="true" (click)="add(messageInput)">Send</button>
         <md-input placeholder="Сообщение" [(ngModel)]="messageInput.text"></md-input>
     </div>
 </div>

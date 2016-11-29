@@ -2,7 +2,7 @@
     <form [formGroup]="authorizationForm" novalidate (ngSubmit)="login(authorizationForm.value)">
         <md-input placeholder="Login" class="inputs" formControlName="login"></md-input>
         <md-input placeholder="Password" class="inputs" formControlName="password" type="password"></md-input>
-        <button md-button md-no-ink class="md-primary login-button" type="submit" >
+        <button md-button [disableRipple]="true" color="primary" class="login-button" type="submit" >
             <span style="color: #ffffff;">LOGIN</span>
         </button>
     </form>

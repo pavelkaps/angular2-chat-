@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import {UsersService} from "../../services/users.service";
 import {VerificationService} from "../../services/verification.service";
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import{ MdButtonModule } from '@angular/material/button'
 
 @Component({
     moduleId: module.id,
