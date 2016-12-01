@@ -2,18 +2,22 @@
 
 import express = require('express');
 import path = require('path');
-
-import Chat = require('../../app/dataAccess/schemas/ChatSchema');
 import UsersRoutes = require('./UsersRoutes');
-import VerificationRoutes = require('./VerificationRoutes');
+import AuthRoutes = require('./AuthRoutes');
+
 var app = express();
 
 class Routes {
+    passport: any;
+
+    constructor(passport: any){
+        this.passport = passport;
+    }
 
     get routes() {
 
         app.use("/", new UsersRoutes().routes);
-        app.use("/verification", new VerificationRoutes().routes);
+        app.use("/auth", new AuthRoutes(this.passport).routes);
 
         return app;
     }

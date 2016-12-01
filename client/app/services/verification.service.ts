@@ -11,7 +11,7 @@ import {Verification} from "../model/verification";
 @Injectable()
 export class VerificationService{
 
-    private verificationUrl = 'api/verification';
+    private verificationUrl = 'api/passport';
     private headers = new Headers({'Content-Type' : 'application/json'});
 
     constructor(private http: Http){}
@@ -26,7 +26,7 @@ export class VerificationService{
 
     registration(values: Verification): Promise<any>{
         return this.http
-            .post(this.verificationUrl + '/registration', JSON.stringify(values), {headers: this.headers})
+            .post(this.verificationUrl + '/signup', JSON.stringify(values), {headers: this.headers})
             .toPromise()
             .then(res => res.json())
             .catch(this.handleError);
