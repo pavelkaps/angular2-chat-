@@ -4,15 +4,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../../model/message';
 import { MessageService } from '../../services/socket.services/message.service';
+import {UserMessage} from "../../model/user.message";
+
 @Component({
     moduleId: module.id,
     selector: 'chat-content',
-    templateUrl: 'chat-content.component.html',
-    styleUrls: ['chat-content.component.css']
+    templateUrl: 'test/chat-content.component.html',
+    styleUrls: ['test/chat-content.component.css']
 })
 
 export class ChatContentComponent implements OnInit{
-    messageBox = [];
+    messageBox: Array<UserMessage> = [];
     messageInput = new Message();
 
     constructor(private messageService: MessageService){}
@@ -22,7 +24,15 @@ export class ChatContentComponent implements OnInit{
     }
 
     add(message: Message){
-        this.messageService.send(message);
-        this.messageInput.text = '';
+        if(message.text != ""){
+            this.messageService.send(message);
+            this.messageInput.text = '';
+        }
+    }
+
+    OnPushEnter(event : any, message: Message): void{
+        if(event.keyCode == 13) {
+            this.add(message);
+        }
     }
 }

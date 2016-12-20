@@ -1,12 +1,14 @@
 <div class="content">
-    <ul>
-        <li *ngFor="let message of messageBox">
-            <span>{{message.text}}</span>
-        </li>
-    </ul>
+    <div id="message-box">
+        <ul>
+            <li *ngFor="let message of messageBox">
+                <span>{{message.text}}</span>
+            </li>
+        </ul>
+    </div>
 
     <div class="send-input">
         <button md-button [disableRipple]="true" (click)="add(messageInput)">Send</button>
-        <md-input placeholder="Сообщение" [(ngModel)]="messageInput.text"></md-input>
+        <md-input placeholder="Сообщение" [(ngModel)]="messageInput.text" (keydown)="OnPushEnter($event, messageInput)"></md-input>
     </div>
 </div>

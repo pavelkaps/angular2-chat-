@@ -2,10 +2,10 @@
  * Created by Паша on 10.11.2016.
  */
 import { Component, OnInit } from '@angular/core';
-import { VerificationLogin } from '../../model/verification-login';
+import { Verification } from '../../model/verification';
 import { Router } from '@angular/router';
 import {UsersService} from "../../services/users.service";
-import {VerificationService} from "../../services/verification.service";
+import {AuthService} from "../../services/authorization.service";
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import{ MdButtonModule } from '@angular/material/button'
 
@@ -22,7 +22,7 @@ export class AuthorizationComponent implements OnInit {
     
     constructor(private router:Router,
                 private usersService:UsersService,
-                private verificationService: VerificationService) {
+                private verificationService: AuthService) {
     }
 
     ngOnInit():void {
@@ -32,10 +32,10 @@ export class AuthorizationComponent implements OnInit {
         });
     }
 
-    login(values : VerificationLogin){
+    login(values : Verification){
         this.verificationService.authorization(values).then(
             (res) => {
-                if(res.result == 'success'){
+                if(res.state == 'success'){
                     console.log(res.user);
                     this.router.navigate(['/main']);
                 }else {

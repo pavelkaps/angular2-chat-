@@ -4,7 +4,7 @@
 import express = require("express");
 var router = express.Router();
 
-class AuthRoute {
+class AuthRoutes {
     passport: any;
 
     constructor(passport: any){
@@ -36,10 +36,15 @@ class AuthRoute {
             res.redirect('/');
         });
 
+        router.get('/session', function(req, res){
+            console.log(req.user);
+            res.redirect('/');
+        });
+
         return router;
 
     };
 }
 
-Object.seal(AuthRoute);
-export = AuthRoute;
+Object.seal(AuthRoutes);
+export = AuthRoutes;

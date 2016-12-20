@@ -1,0 +1,17 @@
+<div class="people-list" id="people-list">
+    <div class="search">
+        <input type="text" placeholder="search" />
+        <i class="fa fa-search"></i>
+    </div>
+    <ul class="list">
+        <li *ngFor="let user of onlineUsers" class="clearfix">
+            <img [src]="user.image" alt="avatar" />
+            <div class="about">
+                <div class="name">{{user.login}}</div>
+                <div class="status">
+                    <i class="fa fa-circle online"></i> online
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

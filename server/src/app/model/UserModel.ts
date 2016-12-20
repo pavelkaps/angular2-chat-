@@ -19,6 +19,11 @@ class UserModel {
         return this._userModel.password;
     }
     
+    get imgage (): string{
+        return this._userModel.image;
+    }
+    
+    
 }
 Object.seal(UserModel);
 export =  UserModel;

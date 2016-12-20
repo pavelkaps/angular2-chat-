@@ -3,4 +3,5 @@
  */
 export class Verification{
     login: string;
+    password: string;
 }

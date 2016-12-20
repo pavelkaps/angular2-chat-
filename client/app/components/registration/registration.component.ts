@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../model/user';
 import { Router } from '@angular/router';
 import {UsersService} from "../../services/users.service";
-import {VerificationService} from "../../services/verification.service";
+import {AuthService} from "../../services/authorization.service";
 import { FormGroup, FormControl } from '@angular/forms';
 import {Verification} from '../../model/verification';
 
@@ -18,12 +18,10 @@ import {Verification} from '../../model/verification';
 
 export class RegistrationComponent implements OnInit {
     public registrationForm:FormGroup;
-    
-    ifDone : string = "...";
 
     constructor(private router:Router,
                 private usersService:UsersService,
-                private verificationService: VerificationService) {
+                private verificationService: AuthService) {
     }
 
     ngOnInit():void {
@@ -37,12 +35,13 @@ export class RegistrationComponent implements OnInit {
     create(values : any){
         let userValue = new Verification;
         userValue.login = values.login;
+        userValue.password = values.password;
 
         this.verificationService.registration(userValue).then(
             (res) => {
                 console.log(res);
                 if(res.result == "success"){
-                    this.usersService.create(new User(values.login, values.password)).then((res)=> console.log(res));
+                    
                 }else {
 
             }});

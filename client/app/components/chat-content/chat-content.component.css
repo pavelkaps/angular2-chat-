@@ -1,6 +1,5 @@
 .send-input{
-
-    margin-bottom: 20px;
+    margin-top: 25px;
 }
 
 .send-input md-input{
@@ -16,4 +15,13 @@
 .content{
     float: right;
     width: 75%;
+}
+
+#message-box{
+    overflow: auto;
+    height: 450px;
+}
+
+#message-box ul li{
+    list-style-type: none;
 }

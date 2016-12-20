@@ -7,7 +7,7 @@ import path = require('path');
 import flash = require('connect-flash');
 import session = require('express-session');
 import cookieParser = require('cookie-parser');
-
+import mongoConnect = require('connect-mongo');
 
 //Routes folder
 import BaseRoutes = require("./config/routes/Routes");
@@ -29,10 +29,30 @@ app.use(express.static(path.resolve(__dirname, '../../node_modules')));
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-//Required for passport
-app.use(session({ secret: 'mySession' }));
+//Delete saved online users on DB
+import OnlineUsers = require("./app/business/OnlineUsersBusiness");
+OnlineUsers.AllRemove((err) => {
+    if(err){
+        console.log(err);
+    }
+    console.log("All users delete");
+});
+
+//Session and passport
+import DataAccess = require('./app/dataAccess/DataAccess');
+let mongooseConnection = DataAccess.mongooseConnection;
+var coonnectToStore = mongoConnect(session);
+var MongoStore = new coonnectToStore({ mongooseConnection: mongooseConnection });
+
+const SECRET_KEY = 'mySession';
+app.use(session({
+    secret: SECRET_KEY,
+    store: MongoStore
+}));
+
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 //Routes
 app.use('/api', new BaseRoutes(passport).routes);
@@ -46,7 +66,13 @@ var renderIndex = (req: express.Request, res: express.Response) => {
     res.sendFile(path.resolve(__dirname, '../client/index.html'));
 };
 
-app.get('/', renderIndex);
+app.get('/*', renderIndex);
+
+//Error Handler
+app.use((err: any, req: express.Request, res: express.Response, next: any) =>{
+    console.error(err.stack);
+});
+
 
 if(env === 'developement'){
     app.use(function(err, req: express.Request, res: express.Response, next: express.NextFunction) {
@@ -71,4 +97,4 @@ app.use(function(err: any, req: express.Request, res: express.Response, next: ex
     });
 });
 
-export { app };
+export { app, passport, MongoStore, SECRET_KEY };

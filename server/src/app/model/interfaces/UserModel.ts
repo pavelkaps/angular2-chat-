@@ -7,6 +7,7 @@ import mongoose = require("mongoose");
 interface UserModel extends mongoose.Document {
     login: string;
     password: string;
+    image: string;
 }
 
 export = UserModel;

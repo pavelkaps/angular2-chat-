@@ -1,7 +1,3 @@
-/**
- * Created by Moiz.Kachwala on 15-06-2016.
- */
-
 import DataAccess = require('../DataAccess');
 import IUserModel = require("./../../model/interfaces/UserModel");
 
@@ -20,6 +16,9 @@ class UserSchema {
             password: {
                 type: String,
                 required: true
+            },
+            image: {
+                type: String
             }
         });
 

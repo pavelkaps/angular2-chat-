@@ -3,13 +3,24 @@
  */
 import http = require('http');
 import socketio = require('socket.io');
-import {app} from "../server";
+import passportSocketIo = require('passport.socketio');
+import cookieParser = require('cookie-parser');
+
+import {app, passport, MongoStore, SECRET_KEY} from "../server";
 import { SocketIndex } from '../socket/socket.index';
 
 var server = http.createServer(app);
 var io = socketio(server);
 
-SocketIndex(io);
+io.use(passportSocketIo.authorize({
+    key: 'connect.sid',
+    secret: SECRET_KEY,
+    store: MongoStore,
+    passport: passport,
+    cookieParser: cookieParser
+}));
+
+new SocketIndex(io);
 
 server.listen(app.get('port'), function(){
     var host = server.address().address;
