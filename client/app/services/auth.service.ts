@@ -1,37 +1,38 @@
 /**
  * Created by Паша on 21.11.2016.
  */
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/toPromise';
-import { Headers, Http} from '@angular/http';
-import {User} from "../model/user";
+import {Headers, Http} from '@angular/http';
 import {Verification} from "../model/verification";
 
 @Injectable()
-export class AuthService{
+export class AuthService {
 
     private verificationUrl = 'api/auth';
-    private headers = new Headers({'Content-Type' : 'application/json'});
+    private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http){}
+    constructor(private http:Http) {
+    }
 
-    authorization(values: Verification): Promise<any>{
+    authorization(values:Verification):Promise<any> {
         return this.http
             .post(this.verificationUrl + '/login', JSON.stringify(values), {headers: this.headers})
             .toPromise()
-            .then(res => res.json())
+            .then(res =>  res.json())
             .catch(this.handleError);
     }
 
-    registration(values: Verification): Promise<any>{
+    registration(values:Verification):Promise<any> {
         return this.http
             .post(this.verificationUrl + '/signup', JSON.stringify(values), {headers: this.headers})
             .toPromise()
             .then(res => res.json())
             .catch(this.handleError);
     }
-    
-    private handleError(error: any): Promise<any>{
+
+
+    private handleError(error:any):Promise<any> {
         return Promise.reject(error.message || error);
     }
 }

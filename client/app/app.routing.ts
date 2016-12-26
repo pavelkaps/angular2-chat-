@@ -5,11 +5,12 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ChatComponent} from './components/chat/chat.component';
 import {MainComponent} from './components/main/main.component'
+import {AuthGuard} from "./auth/auth.guard";
 
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: '/authorization',
+        redirectTo: '/main',
         pathMatch: 'full'
     },
     {
@@ -18,7 +19,12 @@ const appRoutes: Routes = [
     },
     {
         path: 'main',
-        component: ChatComponent
+        component: ChatComponent,
+        canActivate: [AuthGuard]
+        //loadChildren: 'components/chat/chat.module#ChatModule'
+    },
+    { path: "**",
+        redirectTo:"/main"
     }
 ];
 

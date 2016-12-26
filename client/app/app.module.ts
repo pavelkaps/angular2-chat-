@@ -17,7 +17,7 @@ import {RegistrationComponent} from './components/registration/registration.comp
 import {MainComponent} from './components/main/main.component'
 
 import {UsersService} from './services/users.service';
-import {AuthService} from "./services/authorization.service";
+import {AuthService} from "./services/auth.service";
 import {SocketConnectionService} from './services/socket.services/soket.connect.service';
 import {MessageService} from './services/socket.services/message.service';
 
@@ -27,7 +27,9 @@ import {UserListComponent} from "./components/user-list/user-list.component";
 import {UserSocketService} from "./services/socket.services/users-socket.service";
 import {OnlineUsersService} from "./services/online.users.service";
 
-
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+import {AuthGuard} from "./auth/auth.guard";
+import {AuthAccess} from "./auth/auth.access";
 
 @NgModule({
     imports: [
@@ -53,7 +55,10 @@ import {OnlineUsersService} from "./services/online.users.service";
         SocketConnectionService,
         MessageService,
         UserSocketService,
-        OnlineUsersService
+        OnlineUsersService,
+        AuthGuard, 
+        ...AUTH_PROVIDERS,
+        AuthAccess
     ],
     bootstrap: [
         AppComponent

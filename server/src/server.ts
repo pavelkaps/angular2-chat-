@@ -55,6 +55,7 @@ app.use(passport.session());
 
 
 //Routes
+app.set('superSecret', 'superSecret');
 app.use('/api', new BaseRoutes(passport).routes);
 
 //Passport config

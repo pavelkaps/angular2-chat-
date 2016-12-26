@@ -13,5 +13,9 @@
     "serve-static": "registry:dt/serve-static#0.0.0+20160606155157",
     "socket.io": "registry:dt/socket.io#1.4.4+20160909205835",
     "socket.io-client": "registry:dt/socket.io-client#1.4.4+20160317120654"
+  },
+  "dependencies": {
+    "connect-mongo": "registry:dt/connect-mongo#0.0.0+20161119044246",
+    "express-jwt": "registry:npm/express-jwt#3.4.0+20160813170757"
   }
 }

@@ -14,3 +14,5 @@
 /// <reference path="manual/body-parser/body-parser.d.ts" />
 /// <reference path="manual/method-override/method-override.d.ts" />
 /// <reference path="manual/mongoose/mongoose.d.ts" />
+/// <reference path="modules/connect-mongo/index.d.ts" />
+/// <reference path="modules/express-jwt/index.d.ts" />

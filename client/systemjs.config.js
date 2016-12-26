@@ -7,7 +7,7 @@ var isPublic = typeof window != "undefined";
     '@angular':                   (isPublic)? '@angular' : 'node_modules/@angular',
     'rxjs':                       (isPublic)? 'rxjs' : 'node_modules/rxjs',
     'socket.io-client':           (isPublic)? 'socket.io-client':'node_modules/socket.io-client',
-    'ui-router-ng2':              (isPublic)? 'ui-router-ng2':'node_modules/ui-router-ng2'
+    'angular2-jwt':              (isPublic)? 'angular2-jwt':'node_modules/angular2-jwt'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -40,7 +40,7 @@ var isPublic = typeof window != "undefined";
 
   packages['@angular/material'] = { main: 'material.umd.js', defaultExtension: 'js' };
   packages['socket.io-client'] = {  main: '/dist/socket.io.js', defaultExtension: 'js' };
-  packages['ui-router-ng2'] = {  main: '/_bundles/ui-router-ng2.js', defaultExtension: 'js' };
+  packages['angular2-jwt'] = {  main: 'angular2-jwt.js', defaultExtension: 'js' };
 
   var config = {
     map: map,

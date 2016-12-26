@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../model/user';
 import { Router } from '@angular/router';
 import {UsersService} from "../../services/users.service";
-import {AuthService} from "../../services/authorization.service";
+import {AuthService} from "../../services/auth.service";
 import { FormGroup, FormControl } from '@angular/forms';
 import {Verification} from '../../model/verification';
 
@@ -40,8 +40,9 @@ export class RegistrationComponent implements OnInit {
         this.verificationService.registration(userValue).then(
             (res) => {
                 console.log(res);
-                if(res.result == "success"){
-                    
+                if(res.state == 'success'){
+                    localStorage.setItem('id_token', res.token);
+                    this.router.navigate(['/main']);
                 }else {
 
             }});

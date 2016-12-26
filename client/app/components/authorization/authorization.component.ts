@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Verification } from '../../model/verification';
 import { Router } from '@angular/router';
 import {UsersService} from "../../services/users.service";
-import {AuthService} from "../../services/authorization.service";
+import {AuthService} from "../../services/auth.service";
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import{ MdButtonModule } from '@angular/material/button'
 
@@ -37,6 +37,7 @@ export class AuthorizationComponent implements OnInit {
             (res) => {
                 if(res.state == 'success'){
                     console.log(res.user);
+                    localStorage.setItem('id_token', res.token);
                     this.router.navigate(['/main']);
                 }else {
                     console.log('Wrong Data');

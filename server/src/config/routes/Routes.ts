@@ -10,7 +10,8 @@ var app = express();
 
 class Routes {
     passport: any;
-
+    app: any;
+    
     constructor(passport: any){
         this.passport = passport;
     }

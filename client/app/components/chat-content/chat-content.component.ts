@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { Message } from '../../model/message';
 import { MessageService } from '../../services/socket.services/message.service';
 import {UserMessage} from "../../model/user.message";
+import { Router } from '@angular/router';
+import {AuthAccess} from "../../auth/auth.access";
 
 @Component({
     moduleId: module.id,
@@ -17,7 +19,7 @@ export class ChatContentComponent implements OnInit{
     messageBox: Array<UserMessage> = [];
     messageInput = new Message();
 
-    constructor(private messageService: MessageService){}
+    constructor(private messageService: MessageService,private router: Router, private auth: AuthAccess){}
 
     ngOnInit():void {
         this.messageService.newMessageEvent.subscribe(newMessage => this.messageBox.push(newMessage));
@@ -25,6 +27,10 @@ export class ChatContentComponent implements OnInit{
 
     add(message: Message){
         if(message.text != ""){
+            if(message.text == "exit"){
+                this.auth.logout();
+                return;
+            }
             this.messageService.send(message);
             this.messageInput.text = '';
         }

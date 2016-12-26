@@ -2,22 +2,25 @@
  * Created by Паша on 29.11.2016.
  */
 import express = require("express");
+import jwt = require('jsonwebtoken');
+import OnlineUsers = require("../../app/business/OnlineUsersBusiness");
 var router = express.Router();
 
 class AuthRoutes {
     passport: any;
-
+    app: any;
     constructor(passport: any){
         this.passport = passport;
     }
 
     get routes(){
         router.get('/success',function(req,res){
-            res.send({state: 'success', user: req.user ? req.user: null});
+            var token = jwt.sign(req.user, 'secret');
+            res.send({state: 'success', user: req.user ? req.user: null, token: token});
         });
         
         router.get('/failure',function(req,res){
-            res.send({state: 'failure',user:null,message:"Invalid username or password"});
+            res.send({state: 'failure', user:null, message:"Invalid username or password"});
         });
         
         router.post('/login',this.passport.authenticate('login',{
@@ -32,6 +35,16 @@ class AuthRoutes {
 
         router.get('/signout', function(req, res) {
             req.session.user = null;
+
+            OnlineUsers.userDisconnect(req.user._id, (err, res)=> {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    console.log('Disconnect');
+                }
+            });
+
             req.logout();
             res.redirect('/');
         });
