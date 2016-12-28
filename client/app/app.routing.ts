@@ -19,9 +19,9 @@ const appRoutes: Routes = [
     },
     {
         path: 'main',
-        component: ChatComponent,
-        canActivate: [AuthGuard]
-        //loadChildren: 'components/chat/chat.module#ChatModule'
+        loadChildren: 'app/components/chat/chat.module#ChatModule',
+        canLoad: [AuthGuard]
+
     },
     { path: "**",
         redirectTo:"/main"

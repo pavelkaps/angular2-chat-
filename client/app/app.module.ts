@@ -33,6 +33,7 @@ import {AuthAccess} from "./auth/auth.access";
 
 @NgModule({
     imports: [
+        
         BrowserModule,
         FormsModule,
         routing,
@@ -44,10 +45,7 @@ import {AuthAccess} from "./auth/auth.access";
         AppComponent,
         AuthorizationComponent,
         RegistrationComponent,
-        MainComponent,
-        ChatComponent,
-        ChatContentComponent,
-        UserListComponent
+        MainComponent
     ], 
     providers: [
         UsersService,
