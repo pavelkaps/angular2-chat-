@@ -7,7 +7,8 @@ var isPublic = typeof window != "undefined";
     '@angular':                   (isPublic)? '@angular' : 'node_modules/@angular',
     'rxjs':                       (isPublic)? 'rxjs' : 'node_modules/rxjs',
     'socket.io-client':           (isPublic)? 'socket.io-client':'node_modules/socket.io-client',
-    'angular2-jwt':              (isPublic)? 'angular2-jwt':'node_modules/angular2-jwt'
+    'angular2-jwt':              (isPublic)? 'angular2-jwt':'node_modules/angular2-jwt',
+    'angular2-auto-scroll':     (isPublic)? 'angular2-auto-scroll':'node_modules/angular2-auto-scroll'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -41,6 +42,7 @@ var isPublic = typeof window != "undefined";
   packages['@angular/material'] = { main: 'material.umd.js', defaultExtension: 'js' };
   packages['socket.io-client'] = {  main: '/dist/socket.io.js', defaultExtension: 'js' };
   packages['angular2-jwt'] = {  main: 'angular2-jwt.js', defaultExtension: 'js' };
+  packages['angular2-auto-scroll'] = {  main: '/lib/angular2-auto-scroll.directive.js', defaultExtension: 'js' };
 
   var config = {
     map: map,

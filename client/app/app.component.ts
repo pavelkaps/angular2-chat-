@@ -8,7 +8,8 @@ import {Component} from '@angular/core';
     selector: 'app',
     template: `
         <router-outlet></router-outlet>
-    `
+    `,
+    styleUrls: ['app.component.css']
     
 })
 

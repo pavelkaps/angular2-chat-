@@ -1,17 +1,15 @@
 {
-  "name": "angular2-express-mongo",
+  "name": "angular2-chat",
   "version": "1.0.0",
   "description": "Angular2, Mongo, Gulp, Typescript and Express",
   "scripts": {
+    "gulp": "gulp",
     "clean": "gulp clean",
     "compile": "gulp compile",
     "build": "gulp build",
     "deploy": "concurrently --kill-others \"gulp watch\" \"node ./dist/server/bin/www\"",
     "postinstall": "gulp installTypings"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/moizKachwala/Angular2-expressjs-mongoose-gulp-node-typescript.git"
+
   },
   "keywords": [
     "Angular2",
@@ -35,6 +33,7 @@
     "@angular/upgrade": "~2.1.1",
     "@types/socket.io": "^1.4.27",
     "angular-in-memory-web-api": "~0.1.13",
+    "angular2-auto-scroll": "^1.0.12",
     "angular2-jwt": "^0.1.27",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",

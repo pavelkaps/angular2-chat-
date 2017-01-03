@@ -1,14 +1,48 @@
-<div class="content">
-    <div id="message-box">
-        <ul>
-            <li *ngFor="let message of messageBox">
-                <span>{{message.text}}</span>
-            </li>
-        </ul>
+    <div class="chat">
+    <div class="chat-header clearfix">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar"/>
+
+        <div class="chat-about">
+            <div class="chat-with">NAME</div>
+            <div class="chat-num-messages">already 1 902 messages</div>
+        </div>
+        <i class="fa fa-star"></i>
     </div>
 
-    <div class="send-input">
-        <button md-button [disableRipple]="true" (click)="add(messageInput)">Send</button>
-        <md-input placeholder="Сообщение" [(ngModel)]="messageInput.text" (keydown)="OnPushEnter($event, messageInput)"></md-input>
-    </div>
-</div>
+    <div class="chat-history" angular2-auto-scroll lock-y-offset="10" observe-attributes>
+        <ul>
+            <div *ngFor="let userMessage of messageBox" class="clearfix">
+                <div *ngIf="userMessage.isMyMessage == false">
+                    <li>
+                        <div class="message-data">
+                            <span class="message-data-name"><i class="fa fa-circle online"></i>{{userMessage.message.owner_login}}</span>
+                            <span class="message-data-time">{{userMessage.message.date}}</span>
+                        </div>
+                        <div class="message my-message">
+                            {{userMessage.message.text}}
+                        </div>
+                    </li>
+                </div>
+                <div *ngIf="userMessage.isMyMessage == true">
+                    <li class="clearfix">
+                        <div class="message-data align-right">
+                            <span class="message-data-time">{{userMessage.message.date}}</span> &nbsp; &nbsp;
+                            <span class="message-data-name">{{userMessage.message.owner_login}}</span> <i class="fa fa-circle me"></i>
+                        </div>
+                        <div class="message other-message float-right">
+                            {{userMessage.message.text}}
+                        </div>
+                    </li>
+                </div>
+            </div>
+        </ul>
+
+    </div> <!-- end chat-history -->
+
+    <div class="chat-message clearfix">
+        <textarea name="message-to-send" id="message-to-send"
+                  placeholder="Type your message" rows="3"
+                  [(ngModel)]="messageInput.text" (keydown)="OnPushEnter($event, messageInput)"></textarea>
+    </div> <!-- end chat-message -->
+
+</div> <!-- end chat -->

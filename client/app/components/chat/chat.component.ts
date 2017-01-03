@@ -4,8 +4,8 @@ import {UserSocketService} from "../../services/socket.services/users-socket.ser
 @Component({
     moduleId: module.id,
     selector: 'chat',
-    templateUrl: 'test/chat.component.html',
-    styleUrls: ['test/chat.component.css']
+    templateUrl: 'chat.component.html',
+    styleUrls: ['chat.component.css']
 })
 
 export class ChatComponent{

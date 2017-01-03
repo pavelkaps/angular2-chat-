@@ -9,6 +9,7 @@ import {ChatContentComponent} from "../chat-content/chat-content.component";
 import {UserListComponent} from "../user-list/user-list.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule }    from '@angular/forms';
+import {Angular2AutoScroll} from "angular2-auto-scroll/lib/angular2-auto-scroll.directive";
 
 @NgModule({
     imports: [
@@ -17,6 +18,7 @@ import { FormsModule }    from '@angular/forms';
         routing
     ],
     declarations: [
+        Angular2AutoScroll,
         ChatComponent,
         ChatContentComponent,
         UserListComponent

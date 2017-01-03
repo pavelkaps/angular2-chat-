@@ -8,11 +8,13 @@ import {UserMessage} from "../../model/user.message";
 import { Router } from '@angular/router';
 import {AuthAccess} from "../../auth/auth.access";
 
+
+
 @Component({
     moduleId: module.id,
     selector: 'chat-content',
-    templateUrl: 'test/chat-content.component.html',
-    styleUrls: ['test/chat-content.component.css']
+    templateUrl: 'chat-content.component.html',
+    styleUrls: ['chat-content.component.css']
 })
 
 export class ChatContentComponent implements OnInit{

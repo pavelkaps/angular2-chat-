@@ -12,8 +12,8 @@ import {Verification} from '../../model/verification';
 @Component({
     moduleId: module.id,
     selector: 'registration-component',
-    templateUrl: 'registration.component.html',
-    styleUrls: ['registration.component.css']
+    templateUrl: 'test/registration.component.html',
+    styleUrls: ['test/registration.component.css']
 })
 
 export class RegistrationComponent implements OnInit {

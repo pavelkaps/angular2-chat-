@@ -12,8 +12,8 @@ import{ MdButtonModule } from '@angular/material/button'
 @Component({
     moduleId: module.id,
     selector: 'authorization-component',
-    templateUrl: 'authorization.component.html',
-    styleUrls: ['authorization.component.css']
+    templateUrl: 'test/authorization.component.html',
+    styleUrls: ['test/authorization.component.css']
 })
 
 export class AuthorizationComponent implements OnInit {

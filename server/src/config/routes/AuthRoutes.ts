@@ -36,17 +36,21 @@ class AuthRoutes {
         router.get('/signout', function(req, res) {
             req.session.user = null;
 
-            OnlineUsers.userDisconnect(req.user._id, (err, res)=> {
-                if (err) {
-                    console.log(err);
-                }
-                else {
-                    console.log('Disconnect');
-                }
-            });
+            try {
+                OnlineUsers.userDisconnect(req.user._id, (err, res)=> {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        console.log('Disconnect');
+                    }
+                });
+            }catch(ex){
 
-            req.logout();
-            res.redirect('/');
+            }finally{
+                req.logout();
+                res.redirect('/');
+            }
         });
 
         router.get('/session', function(req, res){
