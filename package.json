@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Angular2, Mongo, Gulp, Typescript and Express",
   "scripts": {
-    "gulp": "gulp",
+    "start:dev": "gulp",
     "clean": "gulp clean",
     "compile": "gulp compile",
     "build": "gulp build",
