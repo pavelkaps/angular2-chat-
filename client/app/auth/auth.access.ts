@@ -22,6 +22,7 @@ export class AuthAccess {
             .toPromise()
             .then(() => {
                 localStorage.removeItem('id_token');
+                localStorage.removeItem('user');
                 this.router.navigate(['authorization']);
             });
 

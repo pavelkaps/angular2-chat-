@@ -5,7 +5,14 @@
     </div>
     <ul class="list">
         <li *ngFor="let user of onlineUsers" class="clearfix">
-            <img [src]="user.image" alt="avatar" />
+            <div *ngIf="!user.image">
+                <div class="user-profile-img" [ngStyle]="{'background-image': 'url(/assets/img/default_img_for_profile.jpg)'}"></div>
+            </div>
+
+            <div *ngIf="user.image">
+                <div class="user-profile-img" [ngStyle]="{'background-image': 'url(' + user.image + ')'}"></div>
+            </div>
+
             <div class="about">
                 <div class="name">{{user.login}}</div>
                 <div class="status">

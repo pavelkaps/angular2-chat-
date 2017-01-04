@@ -62,14 +62,15 @@ export function config(passport){
                     var newUser = new User();
                     newUser.login = username;
                     newUser.password = createHash(password);
-
+                    newUser.image = req.body.image;
+                    
                     // save the user
                     newUser.save(function(err) {
                         if (err){
                             console.log('Error in Saving user: '+err);
                             throw err;
                         }
-                        console.log(newUser.username + ' Registration succesful');
+                        console.log(newUser.username + ' Registration successful');
                         return done(null, newUser);
                     });
                 }

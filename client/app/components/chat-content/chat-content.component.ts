@@ -7,6 +7,7 @@ import { MessageService } from '../../services/socket.services/message.service';
 import {UserMessage} from "../../model/user.message";
 import { Router } from '@angular/router';
 import {AuthAccess} from "../../auth/auth.access";
+import {ProfileService} from "../../services/profile.service";
 
 
 
@@ -21,12 +22,23 @@ export class ChatContentComponent implements OnInit{
     messageBox: Array<UserMessage> = [];
     messageInput = new Message();
 
-    constructor(private messageService: MessageService,private router: Router, private auth: AuthAccess){}
+    profileLogin: string;
+    profileImage: string;
+
+    constructor(private messageService: MessageService,private router: Router, private auth: AuthAccess,
+                private  profileService: ProfileService){}
 
     ngOnInit():void {
         this.messageService.newMessageEvent.subscribe(newMessage => this.messageBox.push(newMessage));
+        this.getProfile();
+        
     }
 
+    getProfile(){
+        this.profileLogin = this.profileService.getLogin();
+        this.profileImage = this.profileService.getImage();
+    }
+    
     add(message: Message){
         if(message.text != ""){
             if(message.text == "exit"){

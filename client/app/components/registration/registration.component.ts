@@ -42,6 +42,7 @@ export class RegistrationComponent implements OnInit {
                 console.log(res);
                 if(res.state == 'success'){
                     localStorage.setItem('id_token', res.token);
+                    localStorage.setItem('user', JSON.stringify(res.user));
                     this.router.navigate(['/main']);
                 }else {
 

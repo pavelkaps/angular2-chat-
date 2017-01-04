@@ -30,6 +30,7 @@ import {OnlineUsersService} from "./services/online.users.service";
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import {AuthGuard} from "./auth/auth.guard";
 import {AuthAccess} from "./auth/auth.access";
+import {ProfileService} from "./services/profile.service";
 
 @NgModule({
     imports: [
@@ -56,7 +57,8 @@ import {AuthAccess} from "./auth/auth.access";
         OnlineUsersService,
         AuthGuard, 
         ...AUTH_PROVIDERS,
-        AuthAccess
+        AuthAccess,
+        ProfileService
     ],
     bootstrap: [
         AppComponent

@@ -19,7 +19,7 @@ class UserModel {
         return this._userModel.password;
     }
     
-    get imgage (): string{
+    get image (): string{
         return this._userModel.image;
     }
     

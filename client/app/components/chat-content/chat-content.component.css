@@ -25,6 +25,18 @@ li {
     float: left;
 }
 
+.user-profile-img{
+    float: left;
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 3px solid #65bc78;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
 .chat .chat-header .chat-about {
     float: left;
     padding-left: 10px;
@@ -102,14 +114,14 @@ li {
 }
 
 .chat .chat-message {
-    padding: 30px;
+    padding: 20px;
 }
 
 .chat .chat-message textarea {
     width: 100%;
     border: none;
     font: 14px/22px 'Lato', Arial, sans-serif;
-    margin-bottom: 10px;
+    padding: 10px;
     border-radius: 5px;
     resize: none;
 }

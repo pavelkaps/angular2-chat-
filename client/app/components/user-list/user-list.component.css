@@ -42,6 +42,18 @@
     float: left;
 }
 
+.user-profile-img{
+    float: left;
+    display: inline-block;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 3px solid #65bc78;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
 .people-list .about {
     float: left;
     margin-top: 8px;

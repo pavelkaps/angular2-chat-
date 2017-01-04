@@ -16,6 +16,7 @@ class AuthRoutes {
     get routes(){
         router.get('/success',function(req,res){
             var token = jwt.sign(req.user, 'secret');
+            req.user.password = "none";
             res.send({state: 'success', user: req.user ? req.user: null, token: token});
         });
         
@@ -46,7 +47,7 @@ class AuthRoutes {
                     }
                 });
             }catch(ex){
-
+                
             }finally{
                 req.logout();
                 res.redirect('/');

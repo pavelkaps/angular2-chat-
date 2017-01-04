@@ -38,6 +38,7 @@ export class AuthorizationComponent implements OnInit {
                 if(res.state == 'success'){
                     console.log(res.user);
                     localStorage.setItem('id_token', res.token);
+                    localStorage.setItem('user', JSON.stringify(res.user));
                     this.router.navigate(['/main']);
                 }else {
                     console.log('Wrong Data');
