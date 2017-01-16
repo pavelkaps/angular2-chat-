@@ -8,6 +8,7 @@ import {UserMessage} from "../../model/user.message";
 import { Router } from '@angular/router';
 import {AuthAccess} from "../../auth/auth.access";
 import {ProfileService} from "../../services/profile.service";
+import {UserSocketService} from "../../services/socket.services/users-socket.service";
 
 
 
@@ -26,7 +27,8 @@ export class ChatContentComponent implements OnInit{
     profileImage: string;
 
     constructor(private messageService: MessageService,private router: Router, private auth: AuthAccess,
-                private  profileService: ProfileService){}
+                private  profileService: ProfileService,private userSocketService: UserSocketService){
+    }
 
     ngOnInit():void {
         this.messageService.newMessageEvent.subscribe(newMessage => this.messageBox.push(newMessage));
@@ -41,14 +43,16 @@ export class ChatContentComponent implements OnInit{
     
     add(message: Message){
         if(message.text != ""){
-            if(message.text == "exit"){
-                this.auth.logout();
-                return;
-            }
             this.messageService.send(message);
             this.messageInput.text = '';
         }
     }
+
+    logout(): void{
+        this.auth.logout();
+        this.userSocketService.logoutFromSocketActiveUsers();
+    }
+
 
     OnPushEnter(event : any, message: Message): void{
         if(event.keyCode == 13) {

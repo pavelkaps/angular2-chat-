@@ -18,8 +18,11 @@ export class UserSocketService {
         this.listen();
     }
     public notifyAboutMe(): void{
-        console.log('I am user');
         this.socket.emit("i am new user");
+    }
+    
+    public logoutFromSocketActiveUsers(){
+        this.socket.emit("i logout");
     }
 
     public listen(){

@@ -12,8 +12,8 @@ import{ MdButtonModule } from '@angular/material/button'
 @Component({
     moduleId: module.id,
     selector: 'authorization-component',
-    templateUrl: 'test/authorization.component.html',
-    styleUrls: ['test/authorization.component.css']
+    templateUrl: 'authorization.component.html',
+    styleUrls: ['authorization.component.css']
 })
 
 export class AuthorizationComponent implements OnInit {
@@ -27,8 +27,8 @@ export class AuthorizationComponent implements OnInit {
 
     ngOnInit():void {
         this.authorizationForm = new FormGroup({
-            login: new FormControl(''),
-            password: new FormControl('')
+            login: new FormControl('', Validators.required),
+            password: new FormControl('', Validators.required)
         });
     }
 

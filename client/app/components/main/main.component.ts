@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
 @Component({
     moduleId: module.id,
     selector: 'main-component',
-    templateUrl: 'test/main.component.html',
-    styleUrls: ['test/main.component.css']
+    templateUrl: 'main.component.html',
+    styleUrls: ['main.component.css']
 })
 
 export class MainComponent{

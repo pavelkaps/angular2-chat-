@@ -6,14 +6,14 @@ import { User } from '../../model/user';
 import { Router } from '@angular/router';
 import {UsersService} from "../../services/users.service";
 import {AuthService} from "../../services/auth.service";
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {Verification} from '../../model/verification';
 
 @Component({
     moduleId: module.id,
     selector: 'registration-component',
-    templateUrl: 'test/registration.component.html',
-    styleUrls: ['test/registration.component.css']
+    templateUrl: 'registration.component.html',
+    styleUrls: ['registration.component.css']
 })
 
 export class RegistrationComponent implements OnInit {
@@ -26,15 +26,16 @@ export class RegistrationComponent implements OnInit {
 
     ngOnInit():void {
             this.registrationForm = new FormGroup({
-                login: new FormControl(''),
-                password: new FormControl(''),
-                repeatpassword: new FormControl('')
+                login: new FormControl('', Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(10)])),
+                password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(4), Validators.maxLength(10)])),
+                image: new FormControl('')
         });
     }
 
     create(values : any){
-        let userValue = new Verification;
+        let userValue = new User();
         userValue.login = values.login;
+        userValue.image = values.image;
         userValue.password = values.password;
 
         this.verificationService.registration(userValue).then(

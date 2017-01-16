@@ -5,14 +5,14 @@
         </div>
 
         <div *ngIf="profileImage">
-            <div class="user-profile-img" [ngStyle]="{'background-image': 'url(' + profileImage + ')'}"></div>
+            <div class="user-profile-img"><div [ngStyle]="{'background-image': 'url(' + profileImage + ')'}"></div></div>
         </div>
 
         <div class="chat-about">
             <div class="chat-with">{{profileLogin}}</div>
             <div class="chat-num-messages">already {{messageBox.length}} messages</div>
         </div>
-        <i class="fa fa-star"></i>
+        <input type="button" class="fa-star" value="Logout" (click)="logout()"/>
     </div>
 
     <div class="chat-history" angular2-auto-scroll lock-y-offset="10" observe-attributes>
@@ -22,7 +22,7 @@
                     <li>
                         <div class="message-data">
                             <span class="message-data-name"><i class="fa fa-circle online"></i>{{userMessage.message.owner_login}}</span>
-                            <span class="message-data-time">{{userMessage.message.date}}</span>
+                            <span class="message-data-time">{{userMessage.message.date | date}}</span>
                         </div>
                         <div class="message my-message">
                             {{userMessage.message.text}}
@@ -32,7 +32,7 @@
                 <div *ngIf="userMessage.isMyMessage == true">
                     <li class="clearfix">
                         <div class="message-data align-right">
-                            <span class="message-data-time">{{userMessage.message.date}}</span> &nbsp; &nbsp;
+                            <span class="message-data-time">{{userMessage.message.date | date}}</span> &nbsp; &nbsp;
                             <span class="message-data-name">{{userMessage.message.owner_login}}</span> <i class="fa fa-circle me"></i>
                         </div>
                         <div class="message other-message float-right">

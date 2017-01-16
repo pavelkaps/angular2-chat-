@@ -22,7 +22,6 @@ export class MessageService {
     public send(message : Message): void{
         console.log('I have message' + message.text);
         this.socket.emit("send message", message, (message)=>{
-            console.log(message, "принял");
             let userMessage = new UserMessage(message, true);
             this.newMessageEvent.emit(userMessage);
         });

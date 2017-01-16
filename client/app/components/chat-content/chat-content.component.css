@@ -35,6 +35,7 @@ li {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    background-image: url("/assets/img/default_img_for_profile.jpg");
 }
 
 .chat .chat-header .chat-about {
@@ -54,9 +55,24 @@ li {
 
 .chat .chat-header .fa-star {
     float: right;
-    color: #D8DADF;
-    font-size: 20px;
-    margin-top: 12px;
+    -webkit-border-radius: 17;
+    -moz-border-radius: 17;
+    border-radius: 7px;
+    color: #444753;
+    font-size: 15px;
+    background: #F2F5F8;
+    padding: 10px 20px 10px 20px;
+    border: solid #444753 2px;
+    text-decoration: none;
+    margin-top: 6px;
+
+}
+
+.chat .chat-header input[type="button"]:hover {
+    background: #72828c;
+    color: #F2F5F8;
+    border: solid #72828c 2px;
+    text-decoration: none;
 }
 
 .chat .chat-history {
@@ -84,6 +100,7 @@ li {
     margin-bottom: 15px;
     width: 90%;
     position: relative;
+    overflow-wrap: break-word;
 }
 
 .chat .chat-history .message:after {

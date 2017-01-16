@@ -11,11 +11,11 @@ class OnlineUsersBusiness{
     static userConnect(item: any, callback: (error: any, result: any) => void) {
         var user = new OnlineUsers();
         user.user = item._id;
-        OnlineUsers.create(user, callback);
+        user.save(callback);
     }
 
-    static userDisconnect(_id: string, callback:(error: any, result: any) => void) {
-        OnlineUsers.remove({user: _id}, (err) => callback(err, null));
+    static userDisconnect(_id: string, callback:(error: any) => void) {
+        OnlineUsers.remove({user: _id}, (err) => callback(err));
     }
 
     static getAllOnlineUsers (callback: (error: any, result: any) => void) {

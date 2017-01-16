@@ -10,6 +10,7 @@ import {UserSocketService} from "../../services/socket.services/users-socket.ser
 
 export class ChatComponent{
     constructor(private userSocketService: UserSocketService){
+        console.log("NOTIFY ABOUT ME");
         this.userSocketService.notifyAboutMe();
     }
 }

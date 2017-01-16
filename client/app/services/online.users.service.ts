@@ -10,12 +10,20 @@ import {User} from "../model/user";
 export class OnlineUsersService{
 
     private url = 'api/onlineusers';
-    private headers = new Headers({'Content-Type' : 'application/json'});
+    private headers : Headers;
 
-    constructor(private http: Http){}
+    constructor(private http: Http){
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+        this.headers.append('Cache-Control', 'no-cache');
+        this.headers.append('Cache-Control', 'no-store');
+        this.headers.append('Pragma', 'no-cache');
+        console.log(this.headers);
+
+    }
 
     getOnlineUsers(): Promise<User[]>{
-        return this.http.get(this.url)
+        return this.http.get(this.url, {headers: this.headers})
             .toPromise()
             .then(responce => responce.json() as User[])
             .catch(this.handleError);

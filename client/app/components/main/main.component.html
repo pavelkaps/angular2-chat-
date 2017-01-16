@@ -1,14 +1,22 @@
-<div class="outer">
-    <md-card class="card">
-        <md-card-content>
-            <md-tab-group>
-                <md-tab label="Login" class="login-tab">
-                    <authorization-component></authorization-component>
-                </md-tab>
-                <md-tab label="Register">
-                    <registration-component></registration-component>
-                </md-tab>
-            </md-tab-group>
-        </md-card-content>
-    </md-card>
+<div class="box-sizing">
+    <div class="logmod">
+        <div class="logmod__wrapper">
+            <div class="logmod__container">
+                <ul class="logmod__tabs">
+                    <li data-tabtar="lgm-2" [ngClass]="{'current': isActive(1)}" (click)="setTab(1)"><a>Login</a></li>
+                    <li data-tabtar="lgm-1" [ngClass]="{'current': isActive(2)}" (click)="setTab(2)"><a>Sign Up</a></li>
+                </ul>
+                <div class="logmod__tab-wrapper" [ngClass]="{'register-height' : isActive(2)}">
+                    <div [ngSwitch]="tabIndex">
+                        <div *ngSwitchCase="1">
+                            <authorization-component></authorization-component>
+                        </div>
+                        <div *ngSwitchCase="2">
+                            <registration-component></registration-component>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

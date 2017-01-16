@@ -1,9 +1,44 @@
-<div class="center">
-    <form [formGroup]="authorizationForm" novalidate (ngSubmit)="login(authorizationForm.value)">
-        <md-input placeholder="Login" class="inputs" formControlName="login"></md-input>
-        <md-input placeholder="Password" class="inputs" formControlName="password" type="password"></md-input>
-        <button md-button [disableRipple]="true" color="primary" class="login-button" type="submit" >
-            <span style="color: #ffffff;">LOGIN</span>
-        </button>
-    </form>
+<div class="logmod__tab lgm-2 show">
+    <div class="logmod__heading">
+        <span class="logmod__heading-subtitle">Enter your email and password <strong>to sign in</strong></span>
+    </div>
+    <div class="logmod__form">
+        <form [formGroup]="authorizationForm" novalidate (ngSubmit)="login(authorizationForm.value)" class="simform">
+            <div class="sminputs">
+                <div class="input full">
+                    <label class="string optional" for="user-login">Login*</label>
+                    <input class="string optional" maxlength="255" formControlName="login" id="user-login" placeholder="Login" type="email" size="50" required/>
+                </div>
+            </div>
+            <div class="sminputs">
+                <div class="input full">
+                    <label class="string optional" for="user-pw">Password *</label>
+                    <input class="string optional" maxlength="255" formControlName="password" id="user-pw" placeholder="Password" type="password"  size="50"  required/>
+                </div>
+            </div>
+            <div class="simform__actions align"  >
+                <input class="sumbit" [ngClass]="{'isValid': !authorizationForm.valid }" name="commit" type="submit" [disabled]="!authorizationForm.valid" value="Log In" />
+            </div>
+        </form>
+    </div>
+    <div class="logmod__alter">
+        <div class="logmod__alter-container">
+            <a href="#" class="connect facebook">
+                <div class="connect__icon">
+                    <i class="fa fa-facebook"></i>
+                </div>
+                <div class="connect__context">
+                    <span>Sign in with <strong>Facebook</strong></span>
+                </div>
+            </a>
+            <a href="#" class="connect googleplus">
+                <div class="connect__icon">
+                    <i class="fa fa-google-plus"></i>
+                </div>
+                <div class="connect__context">
+                    <span>Sign in with <strong>Google+</strong></span>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
